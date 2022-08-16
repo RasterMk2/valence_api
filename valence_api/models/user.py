@@ -13,9 +13,7 @@ class User(Model):
     password_hash = fields.CharField(max_length=128)
 
     async def verify_password(self, password: str) -> bool:
-        return valence_api.auth.password.verify_password(
-            password, self.password_hash
-        )
+        return valence_api.auth.password.verify_password(password, self.password_hash)
 
     @classmethod
     async def authenticate_user(cls, username: str, password: str) -> bool | User:

@@ -1,5 +1,7 @@
-from jose import JWTError, jwt
 from datetime import datetime, timedelta
+
+from jose import JWTError, jwt
+
 import valence_api
 
 JTW_ALGORITHM = "HS256"
@@ -13,5 +15,7 @@ def create_access_token(data: dict, expires_delta: timedelta | None = None):
     else:
         expire = datetime.utcnow() + timedelta(minutes=15)
     to_encode.update({"exp": expire})
-    encoded_jwt = jwt.encode(to_encode, valence_api.env.SECRET_KEY, algorithm=JTW_ALGORITHM)
+    encoded_jwt = jwt.encode(
+        to_encode, valence_api.env.SECRET_KEY, algorithm=JTW_ALGORITHM
+    )
     return encoded_jwt

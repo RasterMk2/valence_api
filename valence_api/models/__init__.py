@@ -1,2 +1,2 @@
-from .user import User
 from .register import register
+from .user import User

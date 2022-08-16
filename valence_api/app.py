@@ -15,5 +15,7 @@ def create_app() -> FastAPI:
         allow_headers=["*"],
     )
 
+    app.include_router(valence_api.routers.user.router)
+
     valence_api.models.register(app)
     return app
